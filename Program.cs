@@ -75,15 +75,15 @@ class ProcessInputs
 
 class Students
 {
-    public List<int> idArray = new List<int>();
-    public List<string> nameArray = new List<string>();
-    public List<int> contactNumberArray = new List<int>();
+    public static List<int> idArray = new List<int>();
+    public static List<string> nameArray = new List<string>();
+    public static List<int> contactNumberArray = new List<int>();
     public Students(int id, string name, int contactNumber)
     {
-        this.idArray.Add(id);
-        this.nameArray.Add(name);
-        this.contactNumberArray.Add(contactNumber);
-        ReadArrays();
+        idArray.Add(id);
+        nameArray.Add(name);
+        contactNumberArray.Add(contactNumber);
+        //ReadArrays();
     }
 
     public void ReadArrays()
@@ -126,5 +126,7 @@ public class main
     {
         HelperClass.StartSystem();
         Students stud = new Students(125, "Jiyo", 099578);
+        Students stud2 = new Students(123, "Jiyo", 099578);
+        stud2.ReadArrays();
     }
 }
