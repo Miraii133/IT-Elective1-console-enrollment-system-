@@ -1,0 +1,15 @@
+C:\Users\jiyov\source\repos\ValmoriaLab2\bin\Debug\net6.0\ValmoriaLab2.exe
+C:\Users\jiyov\source\repos\ValmoriaLab2\bin\Debug\net6.0\ValmoriaLab2.deps.json
+C:\Users\jiyov\source\repos\ValmoriaLab2\bin\Debug\net6.0\ValmoriaLab2.runtimeconfig.json
+C:\Users\jiyov\source\repos\ValmoriaLab2\bin\Debug\net6.0\ValmoriaLab2.dll
+C:\Users\jiyov\source\repos\ValmoriaLab2\bin\Debug\net6.0\ValmoriaLab2.pdb
+C:\Users\jiyov\source\repos\ValmoriaLab2\obj\Debug\net6.0\ValmoriaLab2.csproj.AssemblyReference.cache
+C:\Users\jiyov\source\repos\ValmoriaLab2\obj\Debug\net6.0\ValmoriaLab2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jiyov\source\repos\ValmoriaLab2\obj\Debug\net6.0\ValmoriaLab2.AssemblyInfoInputs.cache
+C:\Users\jiyov\source\repos\ValmoriaLab2\obj\Debug\net6.0\ValmoriaLab2.AssemblyInfo.cs
+C:\Users\jiyov\source\repos\ValmoriaLab2\obj\Debug\net6.0\ValmoriaLab2.csproj.CoreCompileInputs.cache
+C:\Users\jiyov\source\repos\ValmoriaLab2\obj\Debug\net6.0\ValmoriaLab2.dll
+C:\Users\jiyov\source\repos\ValmoriaLab2\obj\Debug\net6.0\refint\ValmoriaLab2.dll
+C:\Users\jiyov\source\repos\ValmoriaLab2\obj\Debug\net6.0\ValmoriaLab2.pdb
+C:\Users\jiyov\source\repos\ValmoriaLab2\obj\Debug\net6.0\ValmoriaLab2.genruntimeconfig.cache
+C:\Users\jiyov\source\repos\ValmoriaLab2\obj\Debug\net6.0\ref\ValmoriaLab2.dll
