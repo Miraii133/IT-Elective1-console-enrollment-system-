@@ -13,7 +13,6 @@ class DialogueTexts {
 }
 
 
-
 class HelperClass {
 
     static bool isSystemRunning = false;
@@ -43,6 +42,12 @@ class HelperClass {
             return true;
     }
 
+    // checks if the Inputted value is correct/follows proper formatting
+    public static void IsValidInputInfo(int selectedChoice, int index)
+    {
+
+    }
+
     public static void DisplayChoices()
     {
         Console.WriteLine(DialogueTexts.ChoicesText);
@@ -70,6 +75,33 @@ class ProcessInputs
 
 class Students
 {
+    public List<int> idArray = new List<int>();
+    public List<string> nameArray = new List<string>();
+    public List<int> contactNumberArray = new List<int>();
+    public Students(int id, string name, int contactNumber)
+    {
+        this.idArray.Add(id);
+        this.nameArray.Add(name);
+        this.contactNumberArray.Add(contactNumber);
+        ReadArrays();
+    }
+
+    public void ReadArrays()
+    {
+        foreach (int id in idArray)
+        {
+            Console.WriteLine(id);
+        }
+        foreach (string name in nameArray)
+        {
+            Console.WriteLine(name);
+        }
+        foreach (int contactNumber in contactNumberArray)
+        {
+            Console.WriteLine(contactNumber);
+        }
+    }
+    
 
 }
 
@@ -80,6 +112,10 @@ class Registration
 
 class Course
 {
+    public Course(int a, int b)
+    {
+
+    }
 
 }
 
@@ -89,5 +125,6 @@ public class main
     static void Main()
     {
         HelperClass.StartSystem();
+        Students stud = new Students(125, "Jiyo", 099578);
     }
 }
