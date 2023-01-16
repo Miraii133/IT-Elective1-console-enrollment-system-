@@ -17,8 +17,6 @@ class DialogueTexts {
 class HelperClass {
 
     static bool isSystemRunning = false;
-
-
     // Checks if a choice is valid by parsing string to
     // int and checking for parse exceptions
     public static int ParseChoice(String choiceInput)
@@ -39,7 +37,7 @@ class HelperClass {
     {
         if (parsedChoice <= 0 || parsedChoice > 6)
         {
-            Console.WriteLine("INVALID CHOICE");
+            Console.WriteLine("ERROR: INVALID CHOICE");
             return false;
         }
             return true;
@@ -53,11 +51,6 @@ class HelperClass {
     public static void StartSystem()
     {
         if (!isSystemRunning) isSystemRunning = true;
-        while (isSystemRunning)
-        {
-            DisplayChoices();
-            GetDialogueChoice();
-        }
     }
 
     public static void QuitSystem()
@@ -68,6 +61,27 @@ class HelperClass {
 
 }
 
+
+
+class ProcessInputs
+{
+    //public void 
+}
+
+class Students
+{
+
+}
+
+class Registration
+{
+    
+}
+
+class Course
+{
+
+}
 
 
 public class main
