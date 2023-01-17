@@ -2,7 +2,7 @@
 
 
 class DialogueTexts {
-    public static string ChoicesText = 
+    public const string ChoicesText = 
         "AdDU's Command Line Enrollment\n" +
         "1. List all students\n" +
         "2. Add a student\n" +
@@ -10,6 +10,7 @@ class DialogueTexts {
         "4. Add a course to a registration\n" +
         "5. Display a student's registration\n" +
         "6. Exit\n";
+    
 }
 
 
@@ -32,6 +33,13 @@ class HelperClass {
         return parsedChoice;
     }
 
+    public static T GetInputs<T>()
+    {
+        T input = Console.ReadLine();
+        Console.WriteLine(input);
+        return input;
+    }
+
     public static Boolean IsValidChoice(int parsedChoice)
     {
         if (parsedChoice <= 0 || parsedChoice > 6)
@@ -45,7 +53,7 @@ class HelperClass {
     // checks if the Inputted value is correct/follows proper formatting
     public static void IsValidInputInfo(int selectedChoice, int index)
     {
-
+        
     }
 
     public static void DisplayChoices()
@@ -68,9 +76,21 @@ class HelperClass {
 
 
 
-class ProcessInputs
+class RetrieveInputs
 {
-    //public void 
+    public void AskStudentInfo()
+    {
+        int id;
+        string lastName;
+        string firstName;
+        string middleName;
+        string suffix;
+        Console.WriteLine("Enter student's 6 digit code: ");
+        Console.WriteLine("Enter student's last name: ");
+        Console.WriteLine("Enter student's first name: ");
+        Console.WriteLine("Enter student's middle name: ");
+        Console.WriteLine("Enter student's suffix. Leave blank if none: ");
+    }
 }
 
 class Students
@@ -117,6 +137,11 @@ class Course
 
     }
 
+}
+
+class Subjects
+{
+    
 }
 
 
