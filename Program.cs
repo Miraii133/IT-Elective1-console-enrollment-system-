@@ -1,7 +1,18 @@
 ﻿
+using ValmoriaLab2;
 
+class HelperClass
+{
+    public static int ParseStringToInt(String stringToParse)
+    {
+        int parsedString;
+        Int32.TryParse(stringToParse, out parsedString);
+        return parsedString;
+    }
 
-class DialogueTexts {
+}
+
+class StoreDialogueTexts {
     public const string ChoicesText = 
         "AdDU's Command Line Enrollment\n" +
         "1. List all students\n" +
@@ -13,12 +24,21 @@ class DialogueTexts {
     
 }
 
+class PrintDialogues
+{
+    public static void PrintChoicesText()
+    {
+        Console.WriteLine(StoreDialogueTexts.ChoicesText);
+    }
+}
+
 class SystemControl
 {
-    static bool isSystemRunning = false;
+    public static bool isSystemRunning = false;
     public static void StartSystem()
     {
         if (!isSystemRunning) isSystemRunning = true;
+        MenuControl.StartChoicesLoop();
     }
 
     public static void QuitSystem()
@@ -28,100 +48,23 @@ class SystemControl
 
 }
 
-class HelperClass {
 
-    // Checks if a choice is valid by parsing string to
-    // int and checking for parse exceptions
-    public static int ParseStringToInt(String stringToParse)
-    {
-        int parsedString;
-        Int32.TryParse(stringToParse, out parsedString);
-        return parsedString;
-    }
-
-    
-
-
-   
-
-    public static void IsInt()
-    {
-
-    }
-
-   
-     
-    public static void DisplayChoices()
-    {
-        Console.WriteLine(DialogueTexts.ChoicesText);
-    }
-
-
-}
-
-class VerifyInputs
+class MenuControl
 {
-
-    // checks if the inputted value in menu is correct/existing
-    public static Boolean IsValidChoice(int parsedChoice)
+    // Starts the entire menu loop, ask the question for their menu choice,
+    // ask their inputs, then repeat to asking the question for menu choice
+    public static void StartChoicesLoop()
     {
-        if (parsedChoice <= 0 || parsedChoice > 6)
+        while (SystemControl.isSystemRunning)
         {
-            Console.WriteLine("ERROR: INVALID CHOICE");
-            return false;
+            PrintDialogues.PrintChoicesText();
+            RetrieveInputs retInput = new RetrieveInputs();
+            retInput.GetDialogueChoice();
         }
-        return true;
-    }
-
-    // checks if the Inputted value is correct/follows proper formatting
-    public static void IsValidInput(int selectedChoice, int index)
-    {
-
-    }
-
-}
-
-
-class RetrieveInputs
-{
-    public static Object GetInputs()
-    {
-        Object input = Console.ReadLine();
-        return input;
-    }
-
-    public static int GetDialogueChoice()
-    {
-        string choice = Console.ReadLine();
-        int parsedChoice = HelperClass.ParseStringToInt(choice);
-        VerifyInputs.IsValidChoice(parsedChoice);
-        return parsedChoice;
-    }
-
-        public void AskStudentInfo()
-    {
-        int id;
-        string lastName;
-        string firstName;
-        string middleName;
-        string suffix;
-        Console.WriteLine("Enter student's 6 digit code: ");
-        id = HelperClass.ParseStringToInt(GetInputs().ToString());
-        Console.WriteLine("Enter student's last name: ");
-        lastName = GetInputs().ToString();
-        Console.WriteLine("Enter student's first name: ");
-        firstName = GetInputs().ToString();
-        Console.WriteLine("Enter student's middle name: ");
-        middleName = GetInputs().ToString();
-        Console.WriteLine("Enter student's suffix. Leave blank if none: ");
-        suffix = GetInputs().ToString();
-        Console.WriteLine(id.ToString());
-        Console.WriteLine(lastName);
-        Console.WriteLine(firstName);
-        Console.WriteLine(middleName);
-        Console.WriteLine(suffix);
     }
 }
+
+
 
 class Students
 {
