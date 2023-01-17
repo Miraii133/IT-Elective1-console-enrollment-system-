@@ -13,54 +13,9 @@ class DialogueTexts {
     
 }
 
-
-class HelperClass {
-
+class SystemControl
+{
     static bool isSystemRunning = false;
-    // Checks if a choice is valid by parsing string to
-    // int and checking for parse exceptions
-    public static int ParseChoice(String choiceInput)
-    {
-        int parsedChoice;
-        Int32.TryParse(choiceInput, out parsedChoice);
-        return parsedChoice;
-    }
-    public static int GetDialogueChoice()
-    {
-        string choice = Console.ReadLine();
-        int parsedChoice = ParseChoice(choice);
-        IsValidChoice(parsedChoice);
-        return parsedChoice;
-    }
-
-    public static T GetInputs<T>()
-    {
-        T input = Console.ReadLine();
-        Console.WriteLine(input);
-        return input;
-    }
-
-    public static Boolean IsValidChoice(int parsedChoice)
-    {
-        if (parsedChoice <= 0 || parsedChoice > 6)
-        {
-            Console.WriteLine("ERROR: INVALID CHOICE");
-            return false;
-        }
-            return true;
-    }
-
-    // checks if the Inputted value is correct/follows proper formatting
-    public static void IsValidInputInfo(int selectedChoice, int index)
-    {
-        
-    }
-
-    public static void DisplayChoices()
-    {
-        Console.WriteLine(DialogueTexts.ChoicesText);
-    }
-
     public static void StartSystem()
     {
         if (!isSystemRunning) isSystemRunning = true;
@@ -71,14 +26,79 @@ class HelperClass {
         if (isSystemRunning) isSystemRunning = false;
     }
 
+}
+
+class HelperClass {
+
+    // Checks if a choice is valid by parsing string to
+    // int and checking for parse exceptions
+    public static int ParseStringToInt(String stringToParse)
+    {
+        int parsedString;
+        Int32.TryParse(stringToParse, out parsedString);
+        return parsedString;
+    }
+
+    
+
+
+   
+
+    public static void IsInt()
+    {
+
+    }
+
+   
+     
+    public static void DisplayChoices()
+    {
+        Console.WriteLine(DialogueTexts.ChoicesText);
+    }
+
+
+}
+
+class VerifyInputs
+{
+
+    // checks if the inputted value in menu is correct/existing
+    public static Boolean IsValidChoice(int parsedChoice)
+    {
+        if (parsedChoice <= 0 || parsedChoice > 6)
+        {
+            Console.WriteLine("ERROR: INVALID CHOICE");
+            return false;
+        }
+        return true;
+    }
+
+    // checks if the Inputted value is correct/follows proper formatting
+    public static void IsValidInput(int selectedChoice, int index)
+    {
+
+    }
 
 }
 
 
-
 class RetrieveInputs
 {
-    public void AskStudentInfo()
+    public static Object GetInputs()
+    {
+        Object input = Console.ReadLine();
+        return input;
+    }
+
+    public static int GetDialogueChoice()
+    {
+        string choice = Console.ReadLine();
+        int parsedChoice = HelperClass.ParseStringToInt(choice);
+        VerifyInputs.IsValidChoice(parsedChoice);
+        return parsedChoice;
+    }
+
+        public void AskStudentInfo()
     {
         int id;
         string lastName;
@@ -86,10 +106,20 @@ class RetrieveInputs
         string middleName;
         string suffix;
         Console.WriteLine("Enter student's 6 digit code: ");
+        id = HelperClass.ParseStringToInt(GetInputs().ToString());
         Console.WriteLine("Enter student's last name: ");
+        lastName = GetInputs().ToString();
         Console.WriteLine("Enter student's first name: ");
+        firstName = GetInputs().ToString();
         Console.WriteLine("Enter student's middle name: ");
+        middleName = GetInputs().ToString();
         Console.WriteLine("Enter student's suffix. Leave blank if none: ");
+        suffix = GetInputs().ToString();
+        Console.WriteLine(id.ToString());
+        Console.WriteLine(lastName);
+        Console.WriteLine(firstName);
+        Console.WriteLine(middleName);
+        Console.WriteLine(suffix);
     }
 }
 
@@ -149,9 +179,8 @@ public class main
 {
     static void Main()
     {
-        HelperClass.StartSystem();
-        Students stud = new Students(125, "Jiyo", 099578);
-        Students stud2 = new Students(123, "Jiyo", 099578);
-        stud2.ReadArrays();
+        SystemControl.StartSystem();
+        RetrieveInputs rt = new RetrieveInputs();
+        rt.AskStudentInfo();
     }
 }
