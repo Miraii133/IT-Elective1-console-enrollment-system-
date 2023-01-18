@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ValmoriaLab2
@@ -16,11 +17,7 @@ namespace ValmoriaLab2
         List<int> suffix = new List<int>();
         public Students()
         {
-            /*idArray.Add(id);
-            nameArray.Add(name);
-            contactNumberArray.Add(contactNumber);*/
-            //ReadArrays();
-
+           
             GetStudentInputs();
         }
 
@@ -50,32 +47,59 @@ namespace ValmoriaLab2
             return true;
         }
 
+        private bool isValidName(string name)
+        {
+            Regex regex = new Regex(@"^[a-zA-z\s]+$");
+
+            return regex.IsMatch(name);
+        }
+        private bool isValidSuffix(string suffix)
+        {
+            Regex regex = new Regex(@"^[a-zA-z]+$");
+
+            return regex.IsMatch(suffix);
+        }
+
 
 
 
         private void GetStudentInputs()
         {
             bool isCorrectId = false;
-
+            bool isCorrectLastName = false;
+            bool isCorrectFirstName = false;
+            bool isCorrectMiddleName = false;
+            bool isCorrectSuffix = false;
             while (!isCorrectId)
             {
                 Console.WriteLine("Enter student's 6 digit code: ");
                 if (isValidId(Console.ReadLine())) isCorrectId = true;
             }
-           
-            
 
+            while (!isCorrectLastName)
+            {
+                Console.WriteLine("Enter student's last name: ");
+                if (isValidName(Console.ReadLine())) isCorrectLastName = true;
+            }
+            while (!isCorrectFirstName)
+            {
+                Console.WriteLine("Enter student's first name: ");
+                if (isValidName(Console.ReadLine())) isCorrectFirstName = true;
+            }
+            while (!isCorrectMiddleName)
+            {
+                Console.WriteLine("Enter student's middle name: ");
+                if (isValidName(Console.ReadLine())) isCorrectMiddleName = true;
+            }
+            while (!isCorrectSuffix)
+            {
+                Console.WriteLine("Enter student's suffix: ");
+                if (isValidName(Console.ReadLine())) isCorrectSuffix = true;
+            }
 
-            /*
-            Console.WriteLine("Enter student's last name: ");
-            lastNameList = GetInputs().ToString();
-            Console.WriteLine("Enter student's first name: ");
-            firstName = GetInputs().ToString();
-            Console.WriteLine("Enter student's middle name: ");
-            middleName = GetInputs().ToString();
-            Console.WriteLine("Enter student's suffix. Leave blank if none: ");
-            suffix = GetInputs().ToString();*/
         }
+
+        
     }
 
 
