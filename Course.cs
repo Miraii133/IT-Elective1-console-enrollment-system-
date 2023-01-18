@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace ValmoriaLab2
+namespace Va1lmoriaLab2
 {
     class Course
     {

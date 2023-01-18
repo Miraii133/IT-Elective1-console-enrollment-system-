@@ -17,7 +17,6 @@ namespace ValmoriaLab2
         List<int> suffix = new List<int>();
         public Students()
         {
-           
             GetStudentInputs();
         }
 
@@ -60,6 +59,15 @@ namespace ValmoriaLab2
             return regex.IsMatch(suffix);
         }
 
+        // Have to create this method to retrieve the validatedId after 
+        // checking if userInput is a valid integer
+        // also have to manually parse since ParseInteger() is nested in isValidId()
+        private int GetValidatedId(string userInput)
+        {
+            int parsedId = 0;
+            Int32.TryParse(userInput, out parsedId); return parsedId;
+        }
+
 
 
 
@@ -73,28 +81,54 @@ namespace ValmoriaLab2
             while (!isCorrectId)
             {
                 Console.WriteLine("Enter student's 6 digit code: ");
-                if (isValidId(Console.ReadLine())) isCorrectId = true;
+                string userInput = Console.ReadLine();
+                if (isValidId(userInput))
+                {
+                    isCorrectId = true;
+                    idList.Add(GetValidatedId(userInput));
+                }
+                    
             }
 
             while (!isCorrectLastName)
             {
-                Console.WriteLine("Enter student's last name: ");
-                if (isValidName(Console.ReadLine())) isCorrectLastName = true;
+                Console.WriteLine("Enter student's 6 digit code: ");
+                string userInput = Console.ReadLine();
+                if (isValidId(userInput))
+                {
+                    isCorrectId = true;
+                    idList.Add(GetValidatedId(userInput));
+                }
             }
             while (!isCorrectFirstName)
             {
-                Console.WriteLine("Enter student's first name: ");
-                if (isValidName(Console.ReadLine())) isCorrectFirstName = true;
+                Console.WriteLine("Enter student's 6 digit code: ");
+                string userInput = Console.ReadLine();
+                if (isValidId(userInput))
+                {
+                    isCorrectId = true;
+                    idList.Add(GetValidatedId(userInput));
+                }
             }
             while (!isCorrectMiddleName)
             {
-                Console.WriteLine("Enter student's middle name: ");
-                if (isValidName(Console.ReadLine())) isCorrectMiddleName = true;
+                Console.WriteLine("Enter student's 6 digit code: ");
+                string userInput = Console.ReadLine();
+                if (isValidId(userInput))
+                {
+                    isCorrectId = true;
+                    idList.Add(GetValidatedId(userInput));
+                }
             }
             while (!isCorrectSuffix)
             {
-                Console.WriteLine("Enter student's suffix: ");
-                if (isValidName(Console.ReadLine())) isCorrectSuffix = true;
+                Console.WriteLine("Enter student's 6 digit code: ");
+                string userInput = Console.ReadLine();
+                if (isValidId(userInput))
+                {
+                    isCorrectId = true;
+                    idList.Add(GetValidatedId(userInput));
+                }
             }
 
         }
