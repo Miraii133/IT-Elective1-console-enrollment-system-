@@ -11,7 +11,7 @@ namespace ValmoriaLab2
         {
 
             // checks if the inputted value in menu is correct/existing
-            public static Boolean IsValidChoice(int parsedChoice)
+            public Boolean IsValidChoice(int parsedChoice)
             {
                 if (parsedChoice <= 0 || parsedChoice > 6)
                 {
@@ -22,7 +22,7 @@ namespace ValmoriaLab2
             }
 
             // checks if the Inputted value is correct/follows proper formatting
-            public static void IsValidInput(int selectedChoice, int index)
+            public void IsValidInput(int selectedChoice, int index)
             {
 
             }
@@ -32,6 +32,9 @@ namespace ValmoriaLab2
 
         class RetrieveInputs
         {
+        VerifyInputs checkInputs = new VerifyInputs();
+        HelperClass helperClass = new HelperClass();
+
         private int id;
         private string lastName;
         private string firstName;
@@ -47,13 +50,12 @@ namespace ValmoriaLab2
 
             public void GetDialogueChoice()
             {
-                string choice = Console.ReadLine();
-                int parsedChoice = HelperClass.ParseStringToInt(choice);
-                VerifyInputs.IsValidChoice(parsedChoice);
+            
+                int parsedChoice = helperClass.ParseStringToInt(GetInputs().ToString());
+                checkInputs.IsValidChoice(parsedChoice);
                 menuChoice = parsedChoice;
                 
                 ProceedToSpecificOption proceedToOption = new ProceedToSpecificOption();
-            
                 proceedToOption.MoveToSpecificOption(menuChoice);
             
             }
@@ -61,7 +63,7 @@ namespace ValmoriaLab2
             public void AskStudentInfo()
             {
                 Console.WriteLine("Enter student's 6 digit code: ");
-                id = HelperClass.ParseStringToInt(GetInputs().ToString());
+                id = helperClass.ParseStringToInt(GetInputs().ToString());
                 Console.WriteLine("Enter student's last name: ");
                 lastName = GetInputs().ToString();
                 Console.WriteLine("Enter student's first name: ");
@@ -71,14 +73,28 @@ namespace ValmoriaLab2
                 Console.WriteLine("Enter student's suffix. Leave blank if none: ");
                 suffix = GetInputs().ToString();
             }
+
+        public void AskRegistrationInfo()
+        {
+            Console.WriteLine("Enter the student’s ID: ");
+            id = helperClass.ParseStringToInt(GetInputs().ToString());
+            Console.WriteLine("Enter the school year: ");
+            lastName = GetInputs().ToString();
+            Console.WriteLine("Enter the semester: ");
+            firstName = GetInputs().ToString();
+            Console.WriteLine("Enter the program: ");
+            middleName = GetInputs().ToString();
+            Console.WriteLine("Enter student's suffix. Leave blank if none: ");
+            suffix = GetInputs().ToString();
         }
+    }
     class ProceedToSpecificOption
     {
         public void MoveToSpecificOption(int menuChoice)
         {
-            if (menuChoice == 1)
+            RetrieveInputs rt = new RetrieveInputs();
+            if (menuChoice == 2)
             {
-                RetrieveInputs rt = new RetrieveInputs();
                 rt.AskStudentInfo();
             }
         }

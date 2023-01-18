@@ -3,11 +3,19 @@ using ValmoriaLab2;
 
 class HelperClass
 {
-    public static int ParseStringToInt(String stringToParse)
+    public int ParseStringToInt(String stringToParse)
     {
-        int parsedString;
-        Int32.TryParse(stringToParse, out parsedString);
-        return parsedString;
+        int result = 0;
+        try
+        {
+           result = Int32.Parse(stringToParse);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("ERROR: Not a valid number!");
+            Console.WriteLine(ex.Message);
+        }
+        return result;
     }
 
 }
@@ -66,37 +74,7 @@ class MenuControl
 
 
 
-class Students
-{
-    public static List<int> idArray = new List<int>();
-    public static List<string> nameArray = new List<string>();
-    public static List<int> contactNumberArray = new List<int>();
-    public Students(int id, string name, int contactNumber)
-    {
-        idArray.Add(id);
-        nameArray.Add(name);
-        contactNumberArray.Add(contactNumber);
-        //ReadArrays();
-    }
 
-    public void ReadArrays()
-    {
-        foreach (int id in idArray)
-        {
-            Console.WriteLine(id);
-        }
-        foreach (string name in nameArray)
-        {
-            Console.WriteLine(name);
-        }
-        foreach (int contactNumber in contactNumberArray)
-        {
-            Console.WriteLine(contactNumber);
-        }
-    }
-    
-
-}
 
 class Registration
 {
