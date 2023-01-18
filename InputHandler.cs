@@ -84,7 +84,7 @@ namespace ValmoriaLab2
             firstName = GetInputs().ToString();
             Console.WriteLine("Enter the program: ");
             middleName = GetInputs().ToString();
-            Console.WriteLine("Enter student's suffix. Leave blank if none: ");
+            Console.WriteLine("Enter the year level: ");
             suffix = GetInputs().ToString();
         }
     }
@@ -92,10 +92,9 @@ namespace ValmoriaLab2
     {
         public void MoveToSpecificOption(int menuChoice)
         {
-            RetrieveInputs rt = new RetrieveInputs();
             if (menuChoice == 2)
             {
-                rt.AskStudentInfo();
+                Students students = new Students();
             }
         }
     }
