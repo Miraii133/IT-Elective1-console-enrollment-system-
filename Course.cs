@@ -13,9 +13,14 @@ namespace ValmoriaLab2
     {
         Students students;
         Registration registration;
-        public Course(Students students, Registration registration)
+
+        public void GetStudentsObject(Students students)
         {
             this.students = students;
+        }
+
+        public void GetRegistrationObject(Registration registration)
+        {
             this.registration = registration;
         }
 

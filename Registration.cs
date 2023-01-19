@@ -16,8 +16,9 @@ namespace ValmoriaLab2
         private List<int> schoolYearList = new List<int>();
         private List<string> semesterList = new List<string>();
         private List<string> programList = new List<string>();
-        private List<int> yearLevel = new List<int>();
-        public Registration(Students students)
+        private List<int> yearLevelList = new List<int>();
+        
+        public void GetStudentsObject(Students students)
         {
             this.students = students;
         }
@@ -142,15 +143,11 @@ namespace ValmoriaLab2
         {
             return this.idList;
         }
-        public (List<string> lastName, List<String> firstName, List<String> middleName) GetStudentNameList()
+        public (List<int> schoolYearList, List<String> semesterList, List<String> programList, List<int> yearLevel) GetSchoolInfoList()
         {
-            return (this.lastNameList, this.firstNameList, this.middleNameList);
+            return (this.schoolYearList, this.semesterList, this.programList, this.yearLevelList);
         }
 
-        public List<string> GetStudentSuffix()
-        {
-            return this.suffixList;
-        }
         public void GetRegistrationInputs()
         {
             bool isCorrectId = false;
@@ -208,7 +205,7 @@ namespace ValmoriaLab2
                 if (IsValidYearLevel(userInput))
                 {
                     isCorrectYearLevel = true;
-                    yearLevel.Add(Int32.Parse(userInput));
+                    //yearLevel.Add(Int32.Parse(userInput));
                 }
             }
 

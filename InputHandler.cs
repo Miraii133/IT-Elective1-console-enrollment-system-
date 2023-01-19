@@ -49,7 +49,9 @@ namespace ValmoriaLab2
         public void GetDialogueChoice()
             {
             int parsedChoice = 0;
-            if (!Int32.TryParse(Console.ReadLine(), out parsedChoice)) return;
+            string userInput = Console.ReadLine();
+            //if (!Int32.TryParse(userInput, out _)) return;
+            parsedChoice = Int32.Parse(userInput);
             proceedToOption.MoveToSpecificOption(parsedChoice);
             
             }
@@ -58,12 +60,10 @@ namespace ValmoriaLab2
     class ProceedToSpecificOption
     {
         Students students = new Students();
-        
+        Registration registration = new Registration();
         public void MoveToSpecificOption(int menuChoice)
         {
-            Registration registration = new Registration(students);
             Course course = new Course(students, registration);
-
             if (menuChoice == 1)
             {
                 (List<string> lastNameList, List<string> firstNameList, List<string> middleNameList) = students.GetStudentNameList();
@@ -74,11 +74,17 @@ namespace ValmoriaLab2
             }
             else if (menuChoice == 3)
             {
+                registration.GetStudentsObject(students);
                 registration.GetRegistrationInputs();
             }
             else if (menuChoice == 4)
             {
-                course.
+                course.GetCourseInputs();
+            }
+            else if (menuChoice == 5)
+            {
+
+                registration.GetSchoolInfoList();
             }
         }
     }
