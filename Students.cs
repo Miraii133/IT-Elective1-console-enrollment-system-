@@ -9,15 +9,11 @@ namespace ValmoriaLab2
 {
     class Students
     {
-        List<int> idList = new List<int>();
+        private List<int> idList = new List<int>();
         List<string> lastNameList = new List<string>();
         List<string> firstNameList = new List<string>();
         List<string> middleNameList = new List<string>();
         List<string> suffixList = new List<string>();
-        public Students()
-        {
-            GetStudentInputs();
-        }
 
         private bool isValidId(string idInput)
         {
@@ -58,8 +54,16 @@ namespace ValmoriaLab2
             return regex.IsMatch(suffix);
         }
 
+        public List<int> GetStudentIdsList()
+        {
+            return this.idList;
+        }
+        public (List<string> lastName, List<String> firstName, List<String> middleName) GetStudentNameList()
+        {
+            return (this.lastNameList, this.firstNameList, this.middleNameList);
+        }
 
-        private void GetStudentInputs()
+        public void GetStudentInputs()
         {
             bool isCorrectId = false;
             bool isCorrectLastName = false;
@@ -75,6 +79,7 @@ namespace ValmoriaLab2
                     isCorrectId = true;
                     // parse userInput since idList is an integer
                     idList.Add(Int32.Parse(userInput));
+                   
                 }
                     
             }

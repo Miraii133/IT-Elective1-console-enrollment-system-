@@ -9,9 +9,21 @@ namespace ValmoriaLab2
 
         class VerifyInputs
         {
+        public int ParseInteger(String stringToParse)
+        {
+            int parsedInt = 0;
+            if (!Int32.TryParse(stringToParse, out parsedInt))
+            {
+                Console.WriteLine("ERROR: You have a non-number character.");
+                return parsedInt;
+            }
+            return parsedInt;
+        }
+        
 
-            // checks if the inputted value in menu is correct/existing
-            public Boolean IsValidChoice(int parsedChoice)
+
+    // checks if the inputted value in menu is correct/existing
+    public Boolean IsValidChoice(int parsedChoice)
             {
                 if (parsedChoice <= 0 || parsedChoice > 6)
                 {
@@ -30,71 +42,37 @@ namespace ValmoriaLab2
         }
 
 
-        class RetrieveInputs
+        class DialogueChoice
         {
-        VerifyInputs checkInputs = new VerifyInputs();
-        HelperClass helperClass = new HelperClass();
 
-        private int id;
-        private string lastName;
-        private string firstName;
-        private string middleName;
-        private string suffix;
-        private int menuChoice;
-            public static Object GetInputs()
+        ProceedToSpecificOption proceedToOption = new ProceedToSpecificOption();
+        public void GetDialogueChoice()
             {
-                Object input = Console.ReadLine();
-                return input;
-            }
-
-
-            public void GetDialogueChoice()
-            {
-            
-                int parsedChoice = helperClass.ParseStringToInt(GetInputs().ToString());
-                checkInputs.IsValidChoice(parsedChoice);
-                menuChoice = parsedChoice;
-                
-                ProceedToSpecificOption proceedToOption = new ProceedToSpecificOption();
-                proceedToOption.MoveToSpecificOption(menuChoice);
+            int parsedChoice = 0;
+            if (!Int32.TryParse(Console.ReadLine(), out parsedChoice)) return;
+            proceedToOption.MoveToSpecificOption(parsedChoice);
             
             }
 
-            public void AskStudentInfo()
-            {
-                Console.WriteLine("Enter student's 6 digit code: ");
-                id = helperClass.ParseStringToInt(GetInputs().ToString());
-                Console.WriteLine("Enter student's last name: ");
-                lastName = GetInputs().ToString();
-                Console.WriteLine("Enter student's first name: ");
-                firstName = GetInputs().ToString();
-                Console.WriteLine("Enter student's middle name: ");
-                middleName = GetInputs().ToString();
-                Console.WriteLine("Enter student's suffix. Leave blank if none: ");
-                suffix = GetInputs().ToString();
-            }
-
-        public void AskRegistrationInfo()
-        {
-            Console.WriteLine("Enter the student’s ID: ");
-            id = helperClass.ParseStringToInt(GetInputs().ToString());
-            Console.WriteLine("Enter the school year: ");
-            lastName = GetInputs().ToString();
-            Console.WriteLine("Enter the semester: ");
-            firstName = GetInputs().ToString();
-            Console.WriteLine("Enter the program: ");
-            middleName = GetInputs().ToString();
-            Console.WriteLine("Enter the year level: ");
-            suffix = GetInputs().ToString();
-        }
     }
     class ProceedToSpecificOption
     {
+        Students students = new Students();
         public void MoveToSpecificOption(int menuChoice)
         {
-            if (menuChoice == 2)
+          
+            if (menuChoice == 1)
             {
-                Students students = new Students();
+                (List<string> lastNameList, List<string> firstNameList, List<string> middleNameList) = students.GetStudentNameList();
+                Console.WriteLine(lastNameList[0]);
+                Console.WriteLine(firstNameList[0]);
+                Console.WriteLine(middleNameList[0]);
+            }
+            else if (menuChoice == 2)
+            {
+                students.GetStudentInputs();
+                
+
             }
         }
     }
