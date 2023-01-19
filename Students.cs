@@ -10,17 +10,17 @@ namespace ValmoriaLab2
     class Students
     {
         private List<int> idList = new List<int>();
-        List<string> lastNameList = new List<string>();
-        List<string> firstNameList = new List<string>();
-        List<string> middleNameList = new List<string>();
-        List<string> suffixList = new List<string>();
+        private List<string> lastNameList = new List<string>();
+        private List<string> firstNameList = new List<string>();
+        private List<string> middleNameList = new List<string>();
+        private List<string> suffixList = new List<string>();
 
         private bool isValidId(string idInput)
         {
             int idDigitsRequired = 6;
             int parsedId = 0;
 
-            bool IsSixDigits(int parsedId)
+            bool IsSixDigits()
             {
                 bool isSixDigits = parsedId.ToString().Length == idDigitsRequired;
                 if (!isSixDigits) Console.WriteLine("ERROR: Make sure you have inputted a 6 Digit Code.");
@@ -37,7 +37,7 @@ namespace ValmoriaLab2
                 }
             parsedId = ParseInteger();
             // default parsedId == 0, if it remains 0 then parsing has failed
-            if (parsedId == 0 || !IsSixDigits(parsedId)) return false;
+            if (parsedId == 0 || !IsSixDigits()) return false;
             return true;
         }
 
@@ -63,6 +63,11 @@ namespace ValmoriaLab2
             return (this.lastNameList, this.firstNameList, this.middleNameList);
         }
 
+        public List<string> GetStudentSuffix()
+        {
+            return this.suffixList;
+        }
+
         public void GetStudentInputs()
         {
             bool isCorrectId = false;
@@ -84,7 +89,7 @@ namespace ValmoriaLab2
                     
             }
 
-            while (!isCorrectLastName)
+            while (!isCorrectLastName) 
             {
                 Console.WriteLine("Enter student's last name: ");
                 string userInput = Console.ReadLine();
