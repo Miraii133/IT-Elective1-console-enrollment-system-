@@ -62,6 +62,7 @@ namespace ValmoriaLab2
         public void MoveToSpecificOption(int menuChoice)
         {
             Registration registration = new Registration(students);
+            Course course = new Course(students, registration);
 
             if (menuChoice == 1)
             {
@@ -74,6 +75,10 @@ namespace ValmoriaLab2
             else if (menuChoice == 3)
             {
                 registration.GetRegistrationInputs();
+            }
+            else if (menuChoice == 4)
+            {
+                course.
             }
         }
     }

@@ -12,6 +12,7 @@ namespace ValmoriaLab2
    class Registration {
         Students students;
 
+        private List<int> idList = new List<int>();
         private List<int> schoolYearList = new List<int>();
         private List<string> semesterList = new List<string>();
         private List<string> programList = new List<string>();
@@ -129,10 +130,27 @@ namespace ValmoriaLab2
                 }
                 return true;
             }
-
-            return !IsNumerical(yearLevelInput) && IsWithinRangeOfValidLevel();
+            if (!IsNumerical(yearLevelInput))
+            {
+                Console.WriteLine("ERROR: Your input must be numerical");
+                return false;
+            }
+            if (!IsWithinRangeOfValidLevel()) return false;
+            return true;
+        }
+        public List<int> GetRegistrationIdsList()
+        {
+            return this.idList;
+        }
+        public (List<string> lastName, List<String> firstName, List<String> middleName) GetStudentNameList()
+        {
+            return (this.lastNameList, this.firstNameList, this.middleNameList);
         }
 
+        public List<string> GetStudentSuffix()
+        {
+            return this.suffixList;
+        }
         public void GetRegistrationInputs()
         {
             bool isCorrectId = false;
@@ -147,6 +165,7 @@ namespace ValmoriaLab2
                 if (IsValidId(userInput))
                 {
                     isCorrectId = true;
+                    idList.Add(ParseInteger(userInput));
                 }
 
             }
