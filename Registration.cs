@@ -14,23 +14,36 @@ namespace ValmoriaLab2
 
         private List<int> schoolYearList = new List<int>();
         private List<string> semesterList = new List<string>();
+        private List<string> programList = new List<string>();
+        private List<int> yearLevel = new List<int>();
         public Registration(Students students)
         {
             this.students = students;
         }
+
+        // IsNumerical only returns if a string is numerical, i.e. contains numbers/are entirely numbers
+        // or not
+        private bool IsNumerical(string userInput)
+        {
+            if (!Int32.TryParse(userInput, out int parsedUserInput)) return false;
+            return true;
+        }
+        // ParseInteger parses the userInput string to int
+        int ParseInteger(string userInput)
+        {
+            
+            if (!Int32.TryParse(userInput, out int parsedToInt))
+            {
+                Console.WriteLine("ERROR: You have a non-number character.");
+            }
+            return parsedToInt;
+        }
+
         private bool IsValidId(string idInput)
         {
             int idDigitsRequired = 6;
             int parsedId = 0;
 
-            int ParseInteger()
-            {
-                if (!Int32.TryParse(idInput, out parsedId))
-                {
-                    Console.WriteLine("ERROR: You have a non-number character.");
-                }
-                return parsedId;
-            }
             bool IsSixDigits(int parsedId)
             {
                 bool isSixDigits = parsedId.ToString().Length == idDigitsRequired;
@@ -44,7 +57,7 @@ namespace ValmoriaLab2
                 if (!students.GetStudentIdsList().Contains(123456)) return false;
                 return true;
             }
-            parsedId = ParseInteger();
+            parsedId = ParseInteger(idInput);
             // default parsedId == 0, if it remains 0 then parsing has failed
             if (parsedId == 0 || !IsSixDigits(parsedId)) return false;
             if (!IsExistingStudentId()) return false;
@@ -55,14 +68,6 @@ namespace ValmoriaLab2
         {
             int parsedSchoolYear = 0;
             int schoolyearDigitsRequired = 4;
-            int ParseInteger(string schoolYear)
-            {
-                if (!Int32.TryParse(schoolYear, out parsedSchoolYear))
-                {
-                    Console.WriteLine("ERROR: You have a non-number character.");
-                }
-                return parsedSchoolYear;
-            }
             bool IsFourDigits()
             {
                 bool isFourDigits = schoolYear.Length == schoolyearDigitsRequired;
@@ -78,37 +83,54 @@ namespace ValmoriaLab2
 
         private bool IsValidSemester(string semesterInput)
         {
-            bool IsNotNumerical()
-            {
-                bool isNotNumerical = Int32.TryParse(semesterInput, out int parsedNumerical);
-                if (!isNotNumerical) Console.WriteLine("ERROR: You have inputted a number.");
-                return false;
-            }
-
-            bool IsValidSemester()
+            int parsedSemester;
+            bool IsInListOfSemesters()
             {
                 string[] validSemester = { "First Semester", "Second Semester", "Summer" };
                 foreach (string semester in validSemester)
                 {
-                    if (semester.Contains(semesterInput)) return true;
+                    if (semester.Equals(semesterInput)) return true;
                 }
+                Console.WriteLine("ERROR: Invalid Semester! Semesters: First Semester, Second Semester, Summer");
                 return false;
             }
-            return IsNotNumerical() && IsValidSemester();
+            if (IsNumerical(semesterInput))
+            {
+                Console.WriteLine("ERROR: You have a number in your input.");
+                return false;
+            }
+            if (!IsInListOfSemesters()) return false;
+            return true;
         }
 
         private bool IsValidProgram(string semesterInput)
         {
-            bool IsNotNumerical()
-            {
-                bool isNotNumerical = Int32.TryParse(semesterInput, out int parsedNumerical);
-                if (!isNotNumerical) Console.WriteLine("ERROR: You have inputted a number.");
-                return false;
-            }
-
             // would add further validations if a program exists or not but
             // no further implementation required
-            return IsNotNumerical();
+            if (IsNumerical(semesterInput))
+            {
+                Console.WriteLine("ERROR: You have a number in your input.");
+                return false;
+            }
+            return !IsNumerical(semesterInput);
+        }
+
+        private bool IsValidYearLevel(string yearLevelInput)
+        {
+            int lowestYearLevel = 1;
+            int highestYearLevel = 4;
+            bool IsWithinRangeOfValidLevel()
+            {
+                int parsedYearLevel = ParseInteger(yearLevelInput);
+                if (parsedYearLevel < lowestYearLevel || parsedYearLevel > highestYearLevel)
+                {
+                    Console.WriteLine("ERORR: Invalid year level.");
+                    return false;
+                }
+                return true;
+            }
+
+            return !IsNumerical(yearLevelInput) && IsWithinRangeOfValidLevel();
         }
 
         public void GetRegistrationInputs()
@@ -148,27 +170,28 @@ namespace ValmoriaLab2
                     semesterList.Add(userInput);
                 }
             }
-            /*
+            
             while (!isCorrectProgram)
             {
                 Console.WriteLine("Enter the program: ");
                 string userInput = Console.ReadLine();
-                if (isValidName(userInput))
+                if (IsValidProgram(userInput))
                 {
                     isCorrectProgram = true;
-                    middleNameList.Add(userInput);
+                    programList.Add(userInput);
                 }
             }
+            
             while (!isCorrectYearLevel)
             {
                 Console.WriteLine("Enter the year level: ");
                 string userInput = Console.ReadLine();
-                if (isValidSuffix(userInput))
+                if (IsValidYearLevel(userInput))
                 {
                     isCorrectYearLevel = true;
-                    suffixList.Add(userInput);
+                    yearLevel.Add(Int32.Parse(userInput));
                 }
-            }*/
+            }
 
         }
     }
