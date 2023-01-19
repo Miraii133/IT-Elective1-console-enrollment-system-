@@ -12,12 +12,13 @@ namespace ValmoriaLab2
    class Registration {
         Students students;
 
-        private List<string> schoolYearList = new List<string>();
+        private List<int> schoolYearList = new List<int>();
+        private List<string> semesterList = new List<string>();
         public Registration(Students students)
         {
             this.students = students;
         }
-        private bool isValidId(string idInput)
+        private bool IsValidId(string idInput)
         {
             int idDigitsRequired = 6;
             int parsedId = 0;
@@ -79,11 +80,12 @@ namespace ValmoriaLab2
         {
             bool IsNotNumerical()
             {
-                Regex regex = new Regex(@"^[a-zA-z\s]+$");
-                return regex.IsMatch(semesterInput);
+                bool isNotNumerical = Int32.TryParse(semesterInput, out int parsedNumerical);
+                if (!isNotNumerical) Console.WriteLine("ERROR: You have inputted a number.");
+                return false;
             }
 
-            bool IsValidSchoolYear()
+            bool IsValidSemester()
             {
                 string[] validSemester = { "First Semester", "Second Semester", "Summer" };
                 foreach (string semester in validSemester)
@@ -92,7 +94,21 @@ namespace ValmoriaLab2
                 }
                 return false;
             }
-            return IsNotNumerical() && IsValidSchoolYear();
+            return IsNotNumerical() && IsValidSemester();
+        }
+
+        private bool IsValidProgram(string semesterInput)
+        {
+            bool IsNotNumerical()
+            {
+                bool isNotNumerical = Int32.TryParse(semesterInput, out int parsedNumerical);
+                if (!isNotNumerical) Console.WriteLine("ERROR: You have inputted a number.");
+                return false;
+            }
+
+            // would add further validations if a program exists or not but
+            // no further implementation required
+            return IsNotNumerical();
         }
 
         public void GetRegistrationInputs()
@@ -106,7 +122,7 @@ namespace ValmoriaLab2
             {
                 Console.WriteLine("Enter the student's ID: ");
                 string userInput = Console.ReadLine();
-                if (isValidId(userInput))
+                if (IsValidId(userInput))
                 {
                     isCorrectId = true;
                 }
@@ -119,19 +135,20 @@ namespace ValmoriaLab2
                 if (IsValidSchoolYear(userInput))
                 {
                     isCorrectSchoolYear = true;
-                    schoolYearList.Add(userInput);
+                    schoolYearList.Add(Int32.Parse(userInput));
                 }
             }
-            /*while (!isCorrectSemester)
+            while (!isCorrectSemester)
             {
                 Console.WriteLine("Enter the semester: ");
                 string userInput = Console.ReadLine();
-                if (isValidName(userInput))
+                if (IsValidSemester(userInput))
                 {
                     isCorrectSemester = true;
-                    firstNameList.Add(userInput);
+                    semesterList.Add(userInput);
                 }
             }
+            /*
             while (!isCorrectProgram)
             {
                 Console.WriteLine("Enter the program: ");
