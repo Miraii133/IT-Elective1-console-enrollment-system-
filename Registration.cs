@@ -10,17 +10,21 @@ using System.Xml.Linq;
 namespace ValmoriaLab2
 {
    class Registration {
-        Students students;
 
-        private List<int> idList = new List<int>();
+        private List<Students> studentsList = new List<Students>();
         private List<int> schoolYearList = new List<int>();
         private List<string> semesterList = new List<string>();
         private List<string> programList = new List<string>();
         private List<int> yearLevelList = new List<int>();
         
-        public void GetStudentsObject(Students students)
+        /*public void GetStudentsObject(Students students)
         {
             this.students = students;
+        }*/
+
+        public void StoreStudentsToRegistration(Students students)
+        {
+            studentsList.Add(students);
         }
 
         // IsNumerical only returns if a string is numerical, i.e. contains numbers/are entirely numbers
@@ -53,16 +57,16 @@ namespace ValmoriaLab2
                 return isSixDigits;
             }
 
-            bool IsExistingStudentId()
+           /* bool IsExistingStudentId()
             {
                 // !!!! MAKE SURE TO REPLACE 123456 WITH SOMETHING ELSE!
                 if (!students.GetStudentIdsList().Contains(123456)) return false;
                 return true;
-            }
+            }*/
             parsedId = ParseInteger(idInput);
             // default parsedId == 0, if it remains 0 then parsing has failed
             if (parsedId == 0 || !IsSixDigits(parsedId)) return false;
-            if (!IsExistingStudentId()) return false;
+            //if (!IsExistingStudentId()) return false;
             return true;
         }
 
@@ -85,7 +89,6 @@ namespace ValmoriaLab2
 
         private bool IsValidSemester(string semesterInput)
         {
-            int parsedSemester;
             bool IsInListOfSemesters()
             {
                 string[] validSemester = { "First Semester", "Second Semester", "Summer" };
@@ -120,7 +123,7 @@ namespace ValmoriaLab2
         private bool IsValidYearLevel(string yearLevelInput)
         {
             int lowestYearLevel = 1;
-            int highestYearLevel = 4;
+            int highestYearLevel = 5;
             bool IsWithinRangeOfValidLevel()
             {
                 int parsedYearLevel = ParseInteger(yearLevelInput);

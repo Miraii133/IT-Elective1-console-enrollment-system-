@@ -9,11 +9,19 @@ namespace ValmoriaLab2
 {
     class Students
     {
-        private List<int> idList = new List<int>();
-        private List<string> lastNameList = new List<string>();
-        private List<string> firstNameList = new List<string>();
-        private List<string> middleNameList = new List<string>();
-        private List<string> suffixList = new List<string>();
+        Registration registration;
+        private int id;
+        private string lastName;
+        private string firstName;
+        private string middleName;
+        private string suffix;
+
+        public void GetRegistrationObject(Registration registration)
+        {
+            this.registration = registration;
+        }
+        
+     
 
         private bool isValidId(string idInput)
         {
@@ -54,19 +62,19 @@ namespace ValmoriaLab2
             return regex.IsMatch(suffix);
         }
 
-        public List<int> GetStudentIdsList()
+       /* public int GetStudentIdsList()
         {
-            return this.idList;
+            return id;
         }
         public (List<string> lastName, List<String> firstName, List<String> middleName) GetStudentNameList()
         {
-            return (this.lastNameList, this.firstNameList, this.middleNameList);
+            return (lastName, firstName, middleName);
         }
 
         public List<string> GetStudentSuffix()
         {
-            return this.suffixList;
-        }
+            return this.suffix;
+        }*/
 
         public void GetStudentInputs()
         {
@@ -82,8 +90,8 @@ namespace ValmoriaLab2
                 if (isValidId(userInput))
                 {
                     isCorrectId = true;
-                    // parse userInput since idList is an integer
-                    idList.Add(Int32.Parse(userInput));
+                    // parse userInput since id is an integer
+                    id = Int32.Parse(userInput);
                    
                 }
                     
@@ -96,7 +104,7 @@ namespace ValmoriaLab2
                 if (isValidName(userInput))
                 {
                     isCorrectLastName = true;
-                    lastNameList.Add(userInput);
+                    lastName = userInput;
                 }
             }
             while (!isCorrectFirstName)
@@ -106,7 +114,7 @@ namespace ValmoriaLab2
                 if (isValidName(userInput))
                 {
                     isCorrectFirstName = true;
-                    firstNameList.Add(userInput);
+                    firstName = userInput;
                 }
             }
             while (!isCorrectMiddleName)
@@ -116,7 +124,7 @@ namespace ValmoriaLab2
                 if (isValidName(userInput))
                 {
                     isCorrectMiddleName = true;
-                    middleNameList.Add(userInput);
+                    middleName = userInput;
                 }
             }
             while (!isCorrectSuffix)
@@ -126,13 +134,33 @@ namespace ValmoriaLab2
                 if (isValidSuffix(userInput))
                 {
                     isCorrectSuffix = true;
-                    suffixList.Add(userInput);
+                    suffix = userInput;
                 }
             }
 
         }
 
-        
+
+    
+ 
+
+        public class PrintStudents
+        {
+            private void GetStudentName()
+            {
+
+            }
+
+            private void GetStudentRegistration()
+            {
+
+            }
+
+            private void GetStudentNumberOfCourses()
+            {
+
+            }
+        }
     }
 
 

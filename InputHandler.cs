@@ -61,24 +61,26 @@ namespace ValmoriaLab2
     {
         Students students = new Students();
         Registration registration = new Registration();
+        Course course = new Course();
         public void MoveToSpecificOption(int menuChoice)
         {
-            Course course = new Course(students, registration);
             if (menuChoice == 1)
             {
-                (List<string> lastNameList, List<string> firstNameList, List<string> middleNameList) = students.GetStudentNameList();
+                
             }
             else if (menuChoice == 2)
             {
                 students.GetStudentInputs();
+                registration.StoreStudentsToRegistration(students);
             }
             else if (menuChoice == 3)
             {
-                registration.GetStudentsObject(students);
                 registration.GetRegistrationInputs();
             }
             else if (menuChoice == 4)
             {
+                course.GetStudentsObject(students);
+                course.GetRegistrationObject(registration);
                 course.GetCourseInputs();
             }
             else if (menuChoice == 5)
