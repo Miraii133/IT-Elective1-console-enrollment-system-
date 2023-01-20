@@ -60,7 +60,7 @@ namespace ValmoriaLab2
             bool IsExistingStudentId()
             {
                 // !!!! MAKE SURE TO REPLACE 123456 WITH SOMETHING ELSE!
-                if (!students.GetStudentIdsList().Contains(123456)) return false;
+                //if (!students.GetStudentIdsList().Contains(123456)) return false;
                 return true;
             }
             parsedId = ParseInteger(idInput);

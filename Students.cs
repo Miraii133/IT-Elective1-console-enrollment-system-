@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ValmoriaLab2
 {
@@ -16,12 +17,37 @@ namespace ValmoriaLab2
         private string middleName;
         private string suffix;
 
+        public int Id   // property
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        public string LastName   // property
+        {
+            get { return lastName; }
+            set { lastName = value; }
+        }
+        public string FirstName   // property
+        {
+            get { return firstName; }
+            set { firstName = value; }
+        }
+        public string MiddleName   // property
+        {
+            get { return middleName; }
+            set { middleName = value; }
+        }
+        public string Suffix   // property
+        {
+            get { return suffix; }
+            set { suffix = value; }
+        }
         public void GetRegistrationObject(Registration registration)
         {
             this.registration = registration;
         }
         
-     
+        
 
         private bool isValidId(string idInput)
         {
@@ -91,7 +117,7 @@ namespace ValmoriaLab2
                 {
                     isCorrectId = true;
                     // parse userInput since id is an integer
-                    id = Int32.Parse(userInput);
+                    this.Id = Int32.Parse(userInput);
                    
                 }
                     
@@ -104,7 +130,7 @@ namespace ValmoriaLab2
                 if (isValidName(userInput))
                 {
                     isCorrectLastName = true;
-                    lastName = userInput;
+                    this.LastName = userInput;
                 }
             }
             while (!isCorrectFirstName)
@@ -114,7 +140,7 @@ namespace ValmoriaLab2
                 if (isValidName(userInput))
                 {
                     isCorrectFirstName = true;
-                    firstName = userInput;
+                    this.FirstName = userInput;
                 }
             }
             while (!isCorrectMiddleName)
@@ -124,7 +150,7 @@ namespace ValmoriaLab2
                 if (isValidName(userInput))
                 {
                     isCorrectMiddleName = true;
-                    middleName = userInput;
+                    this.MiddleName = userInput;
                 }
             }
             while (!isCorrectSuffix)
@@ -134,7 +160,7 @@ namespace ValmoriaLab2
                 if (isValidSuffix(userInput))
                 {
                     isCorrectSuffix = true;
-                    suffix = userInput;
+                    this.Suffix = userInput;
                 }
             }
 
@@ -160,6 +186,11 @@ namespace ValmoriaLab2
             {
 
             }
+        }
+
+        public static implicit operator List<object>(Students v)
+        {
+            throw new NotImplementedException();
         }
     }
 

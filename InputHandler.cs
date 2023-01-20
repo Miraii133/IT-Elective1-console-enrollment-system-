@@ -71,7 +71,8 @@ namespace ValmoriaLab2
             else if (menuChoice == 2)
             {
                 students.GetStudentInputs();
-                registration.StoreStudentsToRegistration(students);
+                registration.GetStudentsObject(students);
+
             }
             else if (menuChoice == 3)
             {

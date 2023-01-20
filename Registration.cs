@@ -11,20 +11,29 @@ namespace ValmoriaLab2
 {
    class Registration {
 
+        Students students;
         private List<Students> studentsList = new List<Students>();
         private List<int> schoolYearList = new List<int>();
         private List<string> semesterList = new List<string>();
         private List<string> programList = new List<string>();
         private List<int> yearLevelList = new List<int>();
-        
-        /*public void GetStudentsObject(Students students)
+
+
+      
+        public void GetStudentsObject(Students students)
         {
             this.students = students;
-        }*/
-
-        public void StoreStudentsToRegistration(Students students)
-        {
             studentsList.Add(students);
+            ReadStudentsList();
+        }
+
+        private void ReadStudentsList()
+        {
+            foreach (var student in this.studentsList)
+            {
+                Console.WriteLine(student.LastName + "lastName");
+                Console.WriteLine(student.FirstName + "FirstName");
+            }
         }
 
         // IsNumerical only returns if a string is numerical, i.e. contains numbers/are entirely numbers
@@ -142,10 +151,11 @@ namespace ValmoriaLab2
             if (!IsWithinRangeOfValidLevel()) return false;
             return true;
         }
-        public List<int> GetRegistrationIdsList()
+        /*public List<int> GetRegistrationIdsList()
         {
-            return this.idList;
-        }
+           // return this.idList;
+        }*/
+
         public (List<int> schoolYearList, List<String> semesterList, List<String> programList, List<int> yearLevel) GetSchoolInfoList()
         {
             return (this.schoolYearList, this.semesterList, this.programList, this.yearLevelList);
@@ -165,7 +175,7 @@ namespace ValmoriaLab2
                 if (IsValidId(userInput))
                 {
                     isCorrectId = true;
-                    idList.Add(ParseInteger(userInput));
+                    //idList.Add(ParseInteger(userInput));
                 }
 
             }
