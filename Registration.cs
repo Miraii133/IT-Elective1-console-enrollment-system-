@@ -12,7 +12,7 @@ namespace ValmoriaLab2
    class Registration {
 
         Students students;
-        private List<Students> studentsList = new List<Students>();
+        private Dictionary<int, Students> studentsList = new Dictionary<int, Students>();
         private int schoolYear;
         private string semester;
         private string program;
@@ -42,19 +42,16 @@ namespace ValmoriaLab2
         public void GetStudentsObject(Students students)
         {
             this.students = students;
-            studentsList.Add(students);
+            studentsList.Add(students.Id, students);
         }
 
         public void ReadStudentsList()
         {
-            foreach (var student in this.studentsList)
-            {
-                Console.WriteLine(student.Id + "Id");
-                Console.WriteLine(student.LastName + " lastName");
-                Console.WriteLine(student.FirstName + " FirstName");
-                Console.WriteLine(student.MiddleName + " MiddleName");
-                Console.WriteLine(student.Suffix + " Suffix");
-            }
+                Console.WriteLine(students.Id + "Id");
+                Console.WriteLine(students.LastName + " lastName");
+                Console.WriteLine(students.FirstName + " FirstName");
+                Console.WriteLine(students.MiddleName + " MiddleName");
+                Console.WriteLine(students.Suffix + " Suffix");
         }
 
         // IsNumerical only returns if a string is numerical, i.e. contains numbers/are entirely numbers
@@ -203,7 +200,7 @@ namespace ValmoriaLab2
                 if (IsValidSchoolYear(userInput))
                 {
                     isCorrectSchoolYear = true;
-                    schoolYearList.Add(Int32.Parse(userInput));
+                    schoolYear = ParseInteger(userInput);
                 }
             }
             while (!isCorrectSemester)
@@ -213,7 +210,7 @@ namespace ValmoriaLab2
                 if (IsValidSemester(userInput))
                 {
                     isCorrectSemester = true;
-                    semesterList.Add(userInput);
+                    semester = userInput;
                 }
             }
             
@@ -224,7 +221,7 @@ namespace ValmoriaLab2
                 if (IsValidProgram(userInput))
                 {
                     isCorrectProgram = true;
-                    programList.Add(userInput);
+                    program = userInput;
                 }
             }
             
@@ -235,6 +232,7 @@ namespace ValmoriaLab2
                 if (IsValidYearLevel(userInput))
                 {
                     isCorrectYearLevel = true;
+                    yearLevel = ParseInteger(userInput);
                     //yearLevel.Add(Int32.Parse(userInput));
                 }
             }
