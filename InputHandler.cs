@@ -78,6 +78,7 @@ namespace ValmoriaLab2
             else if (menuChoice == 3)
             {
                 registration.GetRegistrationInputs();
+                
             }
             else if (menuChoice == 4)
             {
@@ -88,7 +89,7 @@ namespace ValmoriaLab2
             else if (menuChoice == 5)
             {
 
-                registration.GetSchoolInfoList();
+                //registration.GetSchoolInfoList();
             }
         }
     }

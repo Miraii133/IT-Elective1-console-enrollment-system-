@@ -13,10 +13,12 @@ namespace ValmoriaLab2
 
         Students students;
         private Dictionary<int, Students> studentsList = new Dictionary<int, Students>();
+        private Dictionary<int, Registration> registrationList = new Dictionary<int, Registration>();
         private int schoolYear;
         private string semester;
         private string program;
         private int yearLevel;
+
 
         public int SchoolYear  // property
         {
@@ -47,11 +49,22 @@ namespace ValmoriaLab2
 
         public void ReadStudentsList()
         {
-                Console.WriteLine(students.Id + "Id");
-                Console.WriteLine(students.LastName + " lastName");
-                Console.WriteLine(students.FirstName + " FirstName");
-                Console.WriteLine(students.MiddleName + " MiddleName");
-                Console.WriteLine(students.Suffix + " Suffix");
+            foreach (var student in this.studentsList)
+            {
+                int keyForId = student.Key;
+                Console.WriteLine(student.Key + "Id");
+                Console.WriteLine(studentsList[keyForId].LastName + " Last Name");
+                Console.WriteLine(studentsList[keyForId].FirstName + " FirstName");
+                Console.WriteLine(studentsList[keyForId].MiddleName  + " MiddleName");
+                Console.WriteLine(studentsList[keyForId].Suffix + " Suffix");
+                Console.WriteLine(schoolYear + " Latest Registration");
+            }
+        }
+
+        private int GetLatestRegistration()
+        {
+            
+            return 0;
         }
 
         // IsNumerical only returns if a string is numerical, i.e. contains numbers/are entirely numbers
@@ -189,7 +202,7 @@ namespace ValmoriaLab2
                 if (IsValidId(userInput))
                 {
                     isCorrectId = true;
-                    //idList.Add(ParseInteger(userInput));
+                    //registrationList.add
                 }
 
             }
