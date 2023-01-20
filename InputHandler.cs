@@ -59,17 +59,18 @@ namespace ValmoriaLab2
     }
     class ProceedToSpecificOption
     {
-        Students students = new Students();
+        
         Registration registration = new Registration();
         Course course = new Course();
         public void MoveToSpecificOption(int menuChoice)
         {
             if (menuChoice == 1)
             {
-                
+                registration.ReadStudentsList();
             }
             else if (menuChoice == 2)
             {
+                Students students = new Students();
                 students.GetStudentInputs();
                 registration.GetStudentsObject(students);
 
@@ -80,7 +81,7 @@ namespace ValmoriaLab2
             }
             else if (menuChoice == 4)
             {
-                course.GetStudentsObject(students);
+                //course.GetStudentsObject(students);
                 course.GetRegistrationObject(registration);
                 course.GetCourseInputs();
             }

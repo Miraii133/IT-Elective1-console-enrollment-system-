@@ -13,26 +13,47 @@ namespace ValmoriaLab2
 
         Students students;
         private List<Students> studentsList = new List<Students>();
-        private List<int> schoolYearList = new List<int>();
-        private List<string> semesterList = new List<string>();
-        private List<string> programList = new List<string>();
-        private List<int> yearLevelList = new List<int>();
+        private int schoolYear;
+        private string semester;
+        private string program;
+        private int yearLevel;
 
+        public int SchoolYear  // property
+        {
+            get { return schoolYear; }
+            set { schoolYear = value; }
+        }
+        public string Semester   // property
+        {
+            get { return semester; }
+            set { semester = value; }
+        }
+        public string Program   // property
+        {
+            get { return program; }
+            set { program = value; }
+        }
+        public int YearLevel   // property
+        {
+            get { return yearLevel; }
+            set { yearLevel = value; }
+        }
 
-      
         public void GetStudentsObject(Students students)
         {
             this.students = students;
             studentsList.Add(students);
-            ReadStudentsList();
         }
 
-        private void ReadStudentsList()
+        public void ReadStudentsList()
         {
             foreach (var student in this.studentsList)
             {
-                Console.WriteLine(student.LastName + "lastName");
-                Console.WriteLine(student.FirstName + "FirstName");
+                Console.WriteLine(student.Id + "Id");
+                Console.WriteLine(student.LastName + " lastName");
+                Console.WriteLine(student.FirstName + " FirstName");
+                Console.WriteLine(student.MiddleName + " MiddleName");
+                Console.WriteLine(student.Suffix + " Suffix");
             }
         }
 
@@ -156,10 +177,6 @@ namespace ValmoriaLab2
            // return this.idList;
         }*/
 
-        public (List<int> schoolYearList, List<String> semesterList, List<String> programList, List<int> yearLevel) GetSchoolInfoList()
-        {
-            return (this.schoolYearList, this.semesterList, this.programList, this.yearLevelList);
-        }
 
         public void GetRegistrationInputs()
         {
