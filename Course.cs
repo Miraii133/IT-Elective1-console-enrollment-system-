@@ -37,7 +37,7 @@ namespace ValmoriaLab2
 
         private bool IsNumerical(string userInput)
         {
-            if (!Int32.TryParse(userInput, out int parsedUserInput)) return false;
+            if (!Int32.TryParse(userInput, out _)) return false;
             return true;
         }
         // ParseInteger parses the userInput string to int
@@ -95,7 +95,6 @@ namespace ValmoriaLab2
 
         private bool IsValidSemester(string semesterInput)
         {
-            int parsedSemester;
             bool IsInListOfSemesters()
             {
                 string[] validSemester = { "First Semester", "Second Semester", "Summer" };

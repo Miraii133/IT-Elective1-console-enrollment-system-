@@ -8,9 +8,13 @@ namespace ValmoriaLab2
 {
     class StudentRegistrationCourse
         {
+        class 
+
+
             private Dictionary<int, Students> studentsList = new Dictionary<int, Students>();
             private Dictionary<int, Registration> registrationList = new Dictionary<int, Registration>();
-            private Dictionary<int, Course> courseList = new Dictionary<int, Course>();
+            //private Dictionary<int, Course> courseList = new Dictionary<int, Course>();
+            private List<KeyValuePair<int, Course>> courseList = new List<KeyValuePair<int, Course>>();
             public void GetStudentObject(Students students)
             {
                 students.GetStudentInputs();
@@ -37,7 +41,7 @@ namespace ValmoriaLab2
                 AddCourseToList();
                 void AddCourseToList()
                 {
-                    courseList.Add(course.Id, course);
+                    courseList.Add(new KeyValuePair<int, Course>(course.Id, course));
                 }
             }
 
@@ -50,10 +54,10 @@ namespace ValmoriaLab2
                     Console.WriteLine("LastName" + studentsList[keyForId].LastName);
                     Console.WriteLine("MiddleName " + studentsList[keyForId].MiddleName);
                     Console.WriteLine("Latest Registration " + registrationList[keyForId].SchoolYear);
-                    Console.WriteLine("Courses #: " + courseList.Count);
+                    Console.WriteLine(courseList.Count(k => k.Key == keyForId ));
                 }
             }
         }
     }
-}
+
 
