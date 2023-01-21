@@ -84,8 +84,12 @@ namespace ValmoriaLab2
             }
             else if (menuChoice == 5)
             {
-
-                //registration.GetSchoolInfoList();
+                studentRegistrationCourse.DisplayStudentRegistration(123456);
+            }
+            else if (menuChoice == 6)
+            {
+                Classes classes = new Classes();
+                studentRegistrationCourse.GetClassesObject(classes);
             }
         }
     }

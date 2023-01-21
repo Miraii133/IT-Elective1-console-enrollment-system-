@@ -1,41 +1,57 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace ValmoriaLab2
 {
-    class Course
+
+    class Subjects
     {
-        private int id;
-        private int schoolYear;
-        private string semester;
+        Tuple<int, string, string> programmingParadigm = new Tuple<int, string, string>
+            (156243, "IT 110", "Programming Paradigms");
+
+        Tuple<int, string, string> introToCPlusPlus = new Tuple<int, string, string>
+            (143220, "CSC 101", "Introduction To C++ Programming");
+
+        Tuple<int, string, string> webDevelopment = new Tuple<int, string, string>
+            (172523, "IT 124", "Web Development");
+
+    }
+
+    /* Tuple<int, string, string>> programmingParadigm = new Tuple <int, string, string>(
+     * 156243, IT 110, "Programming Paradigms")
+     * 
+     *Tuple<int, string, string>> IntroToCPlusPlus = new Tuple <int, string, string>(
+     * 143220, IT CSC 101, "Introduction To C++ Programming")
+     * 
+     * *Tuple<int, string, string>> Web Development = new Tuple <int, string, string>(
+     * 172523, IT 124, "Web Development")
+
+      List<Tuple> subjectsList = new List<Tuple>();
+      Dictionary<int, subjectsList> classCode = new Dictionary<int, subjectsList>();
+
+    */
+    // subjects = {subjectCode, subjectNumber, subjectDesc}
+    // Dictionary<int, Subjects> subjectsList = new Dictionary<int, Subjects>(); -> int is subjectCode
+    // Dictionary<int, subjectsList> classCode = new Dictionary<int, subjectsList>(); -> int is classCode
+    class Classes
+    {
         private int classCode;
         private int subjectCode;
         private string schedule;
-
-        public int Id  // property
-        {
-            get { return id; }
-            set { id = value; }
-        }
-        public int SchoolYear  // property
-        {
-            get { return schoolYear; }
-            set { schoolYear = value; }
-        }
-        public string Semester   // property
-        {
-            get { return semester; }
-            set { semester = value; }
-        }
-        public int ClassCode   // property
+        public int ClassCode  // property
         {
             get { return classCode; }
             set { classCode = value; }
         }
-        public int SubjectCode   // property
+        public int SubjectCode  // property
         {
             get { return subjectCode; }
             set { subjectCode = value; }
         }
-        public string Schedule   // property
+        public string Schedule  // property
         {
             get { return schedule; }
             set { schedule = value; }
@@ -57,7 +73,7 @@ namespace ValmoriaLab2
             return parsedToInt;
         }
 
-        private bool IsValidId(string idInput)
+        private bool IsValidClassCode(string idInput)
         {
             int idDigitsRequired = 6;
             int parsedId = 0;
@@ -82,7 +98,7 @@ namespace ValmoriaLab2
             return true;
         }
 
-        private bool IsValidSchoolYear(string schoolYear)
+        private bool IsValidSubjectCode(string schoolYear)
         {
             int parsedSchoolYear = 0;
             int schoolyearDigitsRequired = 4;
@@ -99,7 +115,7 @@ namespace ValmoriaLab2
             return true;
         }
 
-        private bool IsValidSemester(string semesterInput)
+        private bool IsValidSchedule(string semesterInput)
         {
             bool IsInListOfSemesters()
             {
@@ -120,84 +136,26 @@ namespace ValmoriaLab2
             return true;
         }
 
-        private bool IsValidClassCode(string classCodeInput)
-        {
-            // would add further validations if a class code exists or not but
-            // no further implementation required
-            return true;
-        }
-
-        private bool IsValidSubjectCode(string subjectCodeInput)
-        {
-            if (!IsNumerical(subjectCodeInput))
-            {
-                Console.WriteLine("ERROR: Make sure you have inputted a 6 Digit subject code.");
-                return false;
-            }
-            return true;
-        }
-
-        private bool IsValidSchedule(string scheduleInput)
-        {
-            // would add further validations if a schedule or not but
-            // no further implementation required
-            return true;
-        }
-
+        
         public void GetCourseInputs()
         {
-            bool isCorrectId = false;
-            bool isCorrectSchoolYear = false;
-            bool isCorrectSemester = false;
             bool isCorrectClassCode = false;
             bool isCorrectSubjectCode = false;
             bool isCorrectSchedule = false;
-            while (!isCorrectId)
-            {
-                Console.WriteLine("Enter the student's ID: ");
-                string userInput = Console.ReadLine();
-                if (IsValidId(userInput))
-                {
-                    isCorrectId = true;
-                    id = ParseInteger(userInput);
-                }
-
-            }
-            while (!isCorrectSchoolYear)
-            {
-                Console.WriteLine("Enter the school year: ");
-                string userInput = Console.ReadLine();
-                if (IsValidSchoolYear(userInput))
-                {
-                    isCorrectSchoolYear = true;
-                    schoolYear = ParseInteger(userInput);
-                }
-            }
-            while (!isCorrectSemester)
-            {
-                Console.WriteLine("Enter the semester: ");
-                string userInput = Console.ReadLine();
-                if (IsValidSemester(userInput))
-                {
-                    isCorrectSemester = true;
-                    semester = userInput;
-                }
-            }
-
             while (!isCorrectClassCode)
             {
-                Console.WriteLine("Enter the class code: ");
+                Console.WriteLine("Enter class code: ");
                 string userInput = Console.ReadLine();
                 if (IsValidClassCode(userInput))
                 {
                     isCorrectClassCode = true;
                     classCode = ParseInteger(userInput);
                 }
-            }
 
+            }
             while (!isCorrectSubjectCode)
             {
-                Console.WriteLine("Enter the subject code: ");
+                Console.WriteLine("Enter subject code: ");
                 string userInput = Console.ReadLine();
                 if (IsValidSubjectCode(userInput))
                 {
@@ -205,10 +163,9 @@ namespace ValmoriaLab2
                     subjectCode = ParseInteger(userInput);
                 }
             }
-
             while (!isCorrectSchedule)
             {
-                Console.WriteLine("Enter the schedule: ");
+                Console.WriteLine("Enter schedule: ");
                 string userInput = Console.ReadLine();
                 if (IsValidSchedule(userInput))
                 {
@@ -218,6 +175,6 @@ namespace ValmoriaLab2
             }
 
         }
-    }
 
+    }
 }
