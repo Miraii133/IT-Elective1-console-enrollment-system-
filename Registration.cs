@@ -9,17 +9,19 @@ using System.Xml.Linq;
 
 namespace ValmoriaLab2
 {
-   class Registration {
-
-        Students students;
-        private Dictionary<int, Students> studentsList = new Dictionary<int, Students>();
-        private Dictionary<int, Registration> registrationList = new Dictionary<int, Registration>();
+    class Registration
+    {
+        private int id;
         private int schoolYear;
         private string semester;
         private string program;
         private int yearLevel;
 
-
+        public int Id  // property
+        {
+            get { return id; }
+            set { id = value; }
+        }
         public int SchoolYear  // property
         {
             get { return schoolYear; }
@@ -41,31 +43,6 @@ namespace ValmoriaLab2
             set { yearLevel = value; }
         }
 
-        public void GetStudentsObject(Students students)
-        {
-            this.students = students;
-            studentsList.Add(students.Id, students);
-        }
-
-        public void ReadStudentsList()
-        {
-            foreach (var student in this.studentsList)
-            {
-                int keyForId = student.Key;
-                Console.WriteLine(student.Key + "Id");
-                Console.WriteLine(studentsList[keyForId].LastName + " Last Name");
-                Console.WriteLine(studentsList[keyForId].FirstName + " FirstName");
-                Console.WriteLine(studentsList[keyForId].MiddleName  + " MiddleName");
-                Console.WriteLine(studentsList[keyForId].Suffix + " Suffix");
-                Console.WriteLine(schoolYear + " Latest Registration");
-            }
-        }
-
-        private int GetLatestRegistration()
-        {
-            
-            return 0;
-        }
 
         // IsNumerical only returns if a string is numerical, i.e. contains numbers/are entirely numbers
         // or not
@@ -77,7 +54,7 @@ namespace ValmoriaLab2
         // ParseInteger parses the userInput string to int
         int ParseInteger(string userInput)
         {
-            
+
             if (!Int32.TryParse(userInput, out int parsedToInt))
             {
                 Console.WriteLine("ERROR: You have a non-number character.");
@@ -97,12 +74,12 @@ namespace ValmoriaLab2
                 return isSixDigits;
             }
 
-           /* bool IsExistingStudentId()
-            {
-                // !!!! MAKE SURE TO REPLACE 123456 WITH SOMETHING ELSE!
-                if (!students.GetStudentIdsList().Contains(123456)) return false;
-                return true;
-            }*/
+            /* bool IsExistingStudentId()
+             {
+                 // !!!! MAKE SURE TO REPLACE 123456 WITH SOMETHING ELSE!
+                 if (!students.GetStudentIdsList().Contains(123456)) return false;
+                 return true;
+             }*/
             parsedId = ParseInteger(idInput);
             // default parsedId == 0, if it remains 0 then parsing has failed
             if (parsedId == 0 || !IsSixDigits(parsedId)) return false;
@@ -202,7 +179,7 @@ namespace ValmoriaLab2
                 if (IsValidId(userInput))
                 {
                     isCorrectId = true;
-                    //registrationList.add
+                    id = ParseInteger(userInput);
                 }
 
             }
@@ -226,7 +203,7 @@ namespace ValmoriaLab2
                     semester = userInput;
                 }
             }
-            
+
             while (!isCorrectProgram)
             {
                 Console.WriteLine("Enter the program: ");
@@ -237,7 +214,7 @@ namespace ValmoriaLab2
                     program = userInput;
                 }
             }
-            
+
             while (!isCorrectYearLevel)
             {
                 Console.WriteLine("Enter the year level: ");

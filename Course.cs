@@ -1,33 +1,39 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using ValmoriaLab2;
-
+﻿
 namespace ValmoriaLab2
 {
     class Course
     {
-        Students students;
-        Registration registration;
+        private int id;
+        private int schoolYear;
+        private string semester;
+        private int classCode;
+        private int subjectCode;
 
-        public void GetStudentsObject(Students students)
+        public int Id  // property
         {
-            this.students = students;
+            get { return id; }
+            set { id = value; }
         }
-
-        public void GetRegistrationObject(Registration registration)
+        public int SchoolYear  // property
         {
-            this.registration = registration;
+            get { return schoolYear; }
+            set { schoolYear = value; }
         }
-
-        private List<int> schoolYearList = new List<int>();
-        private List<string> semesterList = new List<string>();
-        private List<string> programList = new List<string>();
-        private List<int> yearLevel = new List<int>();
+        public string Semester   // property
+        {
+            get { return semester; }
+            set { semester = value; }
+        }
+        public int ClassCode   // property
+        {
+            get { return classCode; }
+            set { classCode = value; }
+        }
+        public int SubjectCode   // property
+        {
+            get { return subjectCode; }
+            set { subjectCode = value; }
+        }
 
         private bool IsNumerical(string userInput)
         {
@@ -123,7 +129,7 @@ namespace ValmoriaLab2
                 Console.WriteLine("ERROR: Make sure you have inputted a 6 Digit subject code.");
                 return false;
             }
-                return true;
+            return true;
         }
 
         public void GetCourseInputs()
@@ -140,6 +146,7 @@ namespace ValmoriaLab2
                 if (IsValidId(userInput))
                 {
                     isCorrectId = true;
+                    id = ParseInteger(userInput);
                 }
 
             }
@@ -150,7 +157,7 @@ namespace ValmoriaLab2
                 if (IsValidSchoolYear(userInput))
                 {
                     isCorrectSchoolYear = true;
-                    schoolYearList.Add(Int32.Parse(userInput));
+                    schoolYear = ParseInteger(userInput);
                 }
             }
             while (!isCorrectSemester)
@@ -160,7 +167,7 @@ namespace ValmoriaLab2
                 if (IsValidSemester(userInput))
                 {
                     isCorrectSemester = true;
-                    semesterList.Add(userInput);
+                    semester = userInput;
                 }
             }
 
@@ -171,7 +178,7 @@ namespace ValmoriaLab2
                 if (IsValidClassCode(userInput))
                 {
                     isCorrectClassCode = true;
-                    programList.Add(userInput);
+                    classCode = ParseInteger(userInput);
                 }
             }
 
@@ -182,7 +189,7 @@ namespace ValmoriaLab2
                 if (IsValidSubjectCode(userInput))
                 {
                     isCorrectSubjectCode = true;
-                    yearLevel.Add(Int32.Parse(userInput));
+                    subjectCode = ParseInteger(userInput);
                 }
             }
 

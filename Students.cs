@@ -10,7 +10,6 @@ namespace ValmoriaLab2
 {
     class Students
     {
-        Registration registration;
         private int id;
         private string lastName;
         private string firstName;
@@ -42,12 +41,8 @@ namespace ValmoriaLab2
             get { return suffix; }
             set { suffix = value; }
         }
-        public void GetRegistrationObject(Registration registration)
-        {
-            this.registration = registration;
-        }
-        
-        
+
+
 
         private bool isValidId(string idInput)
         {
@@ -68,7 +63,7 @@ namespace ValmoriaLab2
                     Console.WriteLine("ERROR: You have a non-number character.");
                 }
                 return parsedId;
-                }
+            }
             parsedId = ParseInteger();
             // default parsedId == 0, if it remains 0 then parsing has failed
             if (parsedId == 0 || !IsSixDigits()) return false;
@@ -88,19 +83,18 @@ namespace ValmoriaLab2
             return regex.IsMatch(suffix);
         }
 
-       /* public int GetStudentIdsList()
-        {
-            return id;
-        }
-        public (List<string> lastName, List<String> firstName, List<String> middleName) GetStudentNameList()
-        {
-            return (lastName, firstName, middleName);
-        }
-
-        public List<string> GetStudentSuffix()
-        {
-            return this.suffix;
-        }*/
+        /* public int GetStudentIdsList()
+         {
+             return id;
+         }
+         public (List<string> lastName, List<String> firstName, List<String> middleName) GetStudentNameList()
+         {
+             return (lastName, firstName, middleName);
+         }
+         public List<string> GetStudentSuffix()
+         {
+             return this.suffix;
+         }*/
 
         public void GetStudentInputs()
         {
@@ -118,12 +112,12 @@ namespace ValmoriaLab2
                     isCorrectId = true;
                     // parse userInput since id is an integer
                     this.Id = Int32.Parse(userInput);
-                   
+
                 }
-                    
+
             }
 
-            while (!isCorrectLastName) 
+            while (!isCorrectLastName)
             {
                 Console.WriteLine("Enter student's last name: ");
                 string userInput = Console.ReadLine();
@@ -167,8 +161,8 @@ namespace ValmoriaLab2
         }
 
 
-    
- 
+
+
 
         public class PrintStudents
         {
@@ -188,10 +182,7 @@ namespace ValmoriaLab2
             }
         }
 
-        public static implicit operator List<object>(Students v)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 
 

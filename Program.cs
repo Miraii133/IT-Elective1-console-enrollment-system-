@@ -1,8 +1,8 @@
 ﻿
 using ValmoriaLab2;
-
-class StoreDialogueTexts {
-    public const string ChoicesText = 
+class StoreDialogueTexts
+{
+    public const string ChoicesText =
         "AdDU's Command Line Enrollment\n" +
         "1. List all students\n" +
         "2. Add a student\n" +
@@ -10,7 +10,7 @@ class StoreDialogueTexts {
         "4. Add a course to a registration\n" +
         "5. Display a student's registration\n" +
         "6. Exit\n";
-    
+
 }
 
 class PrintDialogues
@@ -61,26 +61,6 @@ class MenuControl
 
 
 
-
-
-class Registration
-{
-    
-}
-
-class Course
-{
-    public Course(int a, int b)
-    {
-
-    }
-
-}
-
-class Subjects
-{
-    
-}
 
 
 public class main
