@@ -6,36 +6,23 @@ using System.Threading.Tasks;
 
 namespace ValmoriaLab2
 {
-    class ExistingSubjects
-    {
-        private 
-
-    }
     class StudentRegistrationCourse
         {
-        //class C
 
-            
             private Dictionary<int, Students> studentsList = new Dictionary<int, Students>();
             private Dictionary<int, Registration> registrationList = new Dictionary<int, Registration>();
             private List<KeyValuePair<int, Course>> courseList = new List<KeyValuePair<int, Course>>();
-            private Dictionary<string, Classes> classesList = new Dictionary<string, Classes>();
 
-            private List<string> subjectsList = new List<string>();
-        /*
-         Subject Code Subject No. Subject Description
-         156243 IT 110  Programming Paradigms
-         143220 CSC 101 Introduction to C++ Programming
-         172523 IT 124  Web Development
-        */
-        private Dictionary<int, Course> subjectsList = new Dictionary<int, Course>();
+            private Dictionary<int, Classes> classesList = new Dictionary<int, Classes>();
+
+            private Dictionary<int, Subjects> subjectsList = new Dictionary<int, Subjects>();
         public void GetStudentObject(Students students)
             {
-                students.GetStudentInputs();
+            students.GetStudentInputs();
                 AddStudentToList();
                 void AddStudentToList()
                 {
-                    studentsList.Add(students.Id, students);
+                    studentsList.Add(students.Id, students );
                 }
             }
 
@@ -61,17 +48,22 @@ namespace ValmoriaLab2
 
             public void GetClassesObject(Classes classes)
             {
-            classes.GetCourseInputs();
+                classes.GetClassesInputs();
+                AddClassesToList();
                 void AddClassesToList()
                 {
-                    courseList.Add(classes.ClassCode, classes);
+                    classesList.Add(classes.ClassCode, classes);
                 }
 
-        }
+            }
 
             public void AddCourse()
             {
-
+                foreach (var classes in classesList)
+                {
+                 //   int id = 
+                   // int classCode = classes[];
+                }
             }
 
             public void DisplayAllStudents()
@@ -84,6 +76,7 @@ namespace ValmoriaLab2
                     Console.WriteLine("MiddleName " + studentsList[keyForId].MiddleName);
                     Console.WriteLine("Latest Registration " + registrationList[keyForId].SchoolYear);
                     Console.WriteLine(courseList.Count(k => k.Key == keyForId ));
+                    
                 }
             }
 

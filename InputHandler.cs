@@ -91,6 +91,23 @@ namespace ValmoriaLab2
                 Classes classes = new Classes();
                 studentRegistrationCourse.GetClassesObject(classes);
             }
+
+            else if (menuChoice == 7)
+            {
+                Classes classes = new Classes();
+                classes.CreateSubjectTuple();
+                foreach (var subjects in classes.Subjects.Keys)
+                {
+                    int keyForId = 156243;
+                    Console.WriteLine("keys" + subjects.ToString());
+                    
+                }
+
+    
+                }
+
+
+            }
         }
     }
 

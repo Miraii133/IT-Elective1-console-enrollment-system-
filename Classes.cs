@@ -8,36 +8,44 @@ namespace ValmoriaLab2
 {
 
     class Subjects
-    {
-        Tuple<int, string, string> programmingParadigm = new Tuple<int, string, string>
+        {
+        public Subjects()
+        {
+            AddTuplesToList();
+        }
+       
+        // turn tuple into a list where the int is the subjectCode
+        private Tuple<int, string, string> programmingParadigm = new Tuple<int, string, string>
             (156243, "IT 110", "Programming Paradigms");
 
-        Tuple<int, string, string> introToCPlusPlus = new Tuple<int, string, string>
+        private Tuple<int, string, string> introToCPlusPlus = new Tuple<int, string, string>
             (143220, "CSC 101", "Introduction To C++ Programming");
 
-        Tuple<int, string, string> webDevelopment = new Tuple<int, string, string>
+        private Tuple<int, string, string> webDevelopment = new Tuple<int, string, string>
             (172523, "IT 124", "Web Development");
+
+
+
+        private List<Tuple<int, string, string>> listOfSubjects = new List<Tuple<int, string, string>>();
+
+        public List<Tuple<int, string, string>> ListOfSubjects  // property
+        {
+            get { return listOfSubjects; }
+        }
+
+        private void AddTuplesToList()
+        {
+            listOfSubjects.Add(programmingParadigm);
+            listOfSubjects.Add(introToCPlusPlus);
+            listOfSubjects.Add(webDevelopment);
+        }
 
     }
 
-    /* Tuple<int, string, string>> programmingParadigm = new Tuple <int, string, string>(
-     * 156243, IT 110, "Programming Paradigms")
-     * 
-     *Tuple<int, string, string>> IntroToCPlusPlus = new Tuple <int, string, string>(
-     * 143220, IT CSC 101, "Introduction To C++ Programming")
-     * 
-     * *Tuple<int, string, string>> Web Development = new Tuple <int, string, string>(
-     * 172523, IT 124, "Web Development")
-
-      List<Tuple> subjectsList = new List<Tuple>();
-      Dictionary<int, subjectsList> classCode = new Dictionary<int, subjectsList>();
-
-    */
-    // subjects = {subjectCode, subjectNumber, subjectDesc}
-    // Dictionary<int, Subjects> subjectsList = new Dictionary<int, Subjects>(); -> int is subjectCode
-    // Dictionary<int, subjectsList> classCode = new Dictionary<int, subjectsList>(); -> int is classCode
     class Classes
     {
+    
+
         private int classCode;
         private int subjectCode;
         private string schedule;
@@ -56,6 +64,34 @@ namespace ValmoriaLab2
             get { return schedule; }
             set { schedule = value; }
         }
+
+
+
+    /*Dictionary<int, Tuple<int, string, string>> subjectsTuple = new Dictionary<int, Tuple<int, string, string>>();
+
+public Dictionary<int, Tuple<int, string, string>> Subjects  // property
+{
+    get { return subjectsTuple; }
+}
+
+public void CreateSubjectTuple()
+    {
+
+        Tuple<int, string, string> programmingParadigm = Tuple.Create(156243, "IT 110", "Programming Paradigms");
+        Tuple<int, string, string> introToCPlusPlus = Tuple.Create(143220, "CSC 101", "Introduction To C++ Programming");
+        Tuple<int, string, string> webDevelopment = Tuple.Create(172523, "IT 124", "Web Development");
+        subjectsTuple.Add(156243, programmingParadigm);
+        subjectsTuple.Add(143220, introToCPlusPlus);
+        subjectsTuple.Add(172523, webDevelopment);
+
+    }*/
+
+    // Dictionary<int, Tuple<int, string, string>>
+    // first int, subjectCode identifier
+    // second int, subjectCode identifier
+
+
+    //private List<int, string, string> programmingParadigm = new List<int, string, string>(); 
 
         private bool IsNumerical(string userInput)
         {
@@ -137,7 +173,7 @@ namespace ValmoriaLab2
         }
 
         
-        public void GetCourseInputs()
+        public void GetClassesInputs()
         {
             bool isCorrectClassCode = false;
             bool isCorrectSubjectCode = false;
